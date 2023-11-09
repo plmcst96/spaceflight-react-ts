@@ -4,14 +4,16 @@ import { useParams } from "react-router-dom"
 import { Detail } from "../inferences/detail"
 
 const DetailArticle = () => {
-  const [detail, setDetail] = useState<Detail | null>(null)
-  const params = useParams()
+  type Params = {
+    detailId: string
+  }
 
+  const [detail, setDetail] = useState<Detail | null>(null)
+  const params = useParams<Params>()
 
   useEffect(() => {
-    
     getDetail()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getDetail = async () => {
@@ -31,19 +33,29 @@ const DetailArticle = () => {
     }
   }
   return (
-    <Container fluid className="mt-5">
+    <Container fluid className="my-5">
       <Row className="justify-content-center">
-       { detail && <Col xs={10} md={8}>
-                <Card>
-            <Card.Img variant="top" src={detail.image_url} />
-            <Card.Body>
-              <Card.Title>{detail.title}</Card.Title>
-              <Card.Text>{detail.summary}</Card.Text>
-              <Card.Text>{detail.url}</Card.Text>
-             
-            </Card.Body>
-          </Card>
-        </Col>}
+        {detail && (
+          <Col xs={10} md={6}>
+            <Card>
+              <Card.Img variant="top" src={detail.image_url} />
+              <Card.Body>
+                <Card.Title>{detail.title}</Card.Title>
+                <Card.Text>{detail.summary}</Card.Text>
+                <Card.Text>{detail.url}</Card.Text>
+                <Card.Text>
+                  {new Date(detail.updated_at).toLocaleString("it-IT", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        )}
       </Row>
     </Container>
   )

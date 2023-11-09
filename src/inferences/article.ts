@@ -13,7 +13,7 @@ export interface Result {
     news_site:    string;
     summary:      string;
     published_at: string;
-    upstringd_at:   string;
+    updated_at:   string;
     featured:     boolean;
     launches:     Launch[];
     events:       any[];
