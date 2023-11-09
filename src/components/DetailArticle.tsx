@@ -35,11 +35,11 @@ const DetailArticle = () => {
       <Row className="justify-content-center">
        { detail && <Col xs={10} md={8}>
                 <Card>
-            <Card.Img variant="top" src={detail?.image_url} />
+            <Card.Img variant="top" src={detail.image_url} />
             <Card.Body>
-              <Card.Title>{detail?.title}</Card.Title>
-              <Card.Text>{detail?.summary}</Card.Text>
-              <Card.Text>{detail?.url}</Card.Text>
+              <Card.Title>{detail.title}</Card.Title>
+              <Card.Text>{detail.summary}</Card.Text>
+              <Card.Text>{detail.url}</Card.Text>
              
             </Card.Body>
           </Card>
