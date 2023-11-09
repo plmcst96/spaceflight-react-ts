@@ -22,7 +22,7 @@ const DetailArticle = () => {
         "https://api.spaceflightnewsapi.net/v4/articles/" + params.detailId
       )
       if (res.ok) {
-        const dataDetail = await res.json()
+        const dataDetail: Detail = await res.json()
         console.log(dataDetail)
         setDetail(dataDetail)
       } else {
