@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { Detail } from "../inferences/detail"
 
 const DetailArticle = () => {
-  const [detail, setDetail] = useState<Detail>()
+  const [detail, setDetail] = useState<Detail | null>(null)
   const params = useParams()
 
 
@@ -33,7 +33,7 @@ const DetailArticle = () => {
   return (
     <Container fluid className="mt-5">
       <Row className="justify-content-center">
-        <Col xs={10} md={8}>
+       { detail && <Col xs={10} md={8}>
                 <Card>
             <Card.Img variant="top" src={detail?.image_url} />
             <Card.Body>
@@ -43,7 +43,7 @@ const DetailArticle = () => {
              
             </Card.Body>
           </Card>
-        </Col>
+        </Col>}
       </Row>
     </Container>
   )
